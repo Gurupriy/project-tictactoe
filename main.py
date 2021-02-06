@@ -1,5 +1,4 @@
 #! /bin/bash/python3
-global no_of_moves
 no_of_moves = 0
 print("Welcome to the blindfold tic-tac-toe game!!")
 
@@ -15,39 +14,50 @@ print('''
 print("The move is played by mentioning the position on the board ex:A1")
 print("The first player starts with cross \'X\' and the next player is \'O\' ")
 print("Let's begin the game")
-board_dict = {'a1':'','a2':'','a3':'','b1':'','b2':'','b3':'','c1':'','c2':'','c3':''}
+board_dict = {'a1':'1','a2':'2','a3':'3','b1':'4','b2':'5','b3':'6','c1':'7','c2':'8','c3':'9a1'}
 def check_function():
 	print(board_dict)
-	if no_of_moves > 9:
-		return -1
 	# Checks the winning position
 	if( board_dict['a1'] == board_dict['a2'] == board_dict['a3']):
-		return True
-	elif( board_dict['a1'] == board_dict['a2'] == board_dict['a3']):
+		print('c1')
 		return True
 	elif( board_dict['b1'] == board_dict['b2'] == board_dict['b3']):
+		print('c3')
 		return True
 	elif( board_dict['c1'] == board_dict['c2'] == board_dict['c3']):
+		print('c4')
 		return True
 	elif( board_dict['a1'] == board_dict['b1'] == board_dict['c1']):
+		print('c5')
 		return True
 	elif( board_dict['a2'] == board_dict['b2'] == board_dict['c2']):
+		print('c6')
 		return True
 	elif( board_dict['a3'] == board_dict['b3'] == board_dict['c3']):
+		print('c7')
 		return True
 	elif( board_dict['a1'] == board_dict['b2'] == board_dict['c3']):
+		print('c8')
 		return True
 	elif( board_dict['a3'] == board_dict['b2'] == board_dict['c1']):
+		print('c9')
 		return True
 	else:
+		print('f1')
 		return False
 print(board_dict)
-while(check_function() != False):
-	print("Entered loop")
+
+for no_of_moves in range(9):
 	p1_pos = input("Enter the first player position")
 	board_dict[p1_pos.lower()] = 'X'
-	no_of_moves = no_of_moves + 1
+	print(board_dict)
+	if True == check_function():
+		Winner = 'P1'
+		break
 	p2_pos = input("Enter the second player position")
 	board_dict[p2_pos.lower()] = 'O'
-	no_of_moves = no_of_moves + 1
-print("We have a winner")	
+	print(board_dict)
+	if True == check_function():
+		Winner = 'P2'
+		break
+print('We have winner' + Winner)
